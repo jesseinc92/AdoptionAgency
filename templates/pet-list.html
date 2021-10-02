@@ -5,11 +5,15 @@
 {% block content %}
 <h1>Pets</h1>
 
+<div id="list-container">
 {% for pet in pets %}
-<div class="pet-container ">
-    <img src="{{pet.photo_url}}" alt="pet photo">
-    <p><a href="">{{pet.name}}</a> is {% if pet.available %}
-        <strong>available</strong>{% else %}unavailable{% endif %}.</p>
-</div>
+    <div class="pet-container">
+        <img src="{{pet.photo_url}}" alt="pet photo">
+        <p><a href="/{{pet.id}}">{{pet.name}}</a> is {% if pet.available %}
+            <strong>available</strong>{% else %}unavailable{% endif %}.</p>
+    </div>
 {% endfor %}
+</div>
+
+<a href="/add" class="btn btn-primary" role="button">Add Pet</a>
 {% endblock %}
