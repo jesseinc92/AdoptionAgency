@@ -1,6 +1,6 @@
 from models import connect_db
 from flask import Flask, render_template, redirect
-from models import db, connect_db
+from models import db, connect_db, Pet
 
 app = Flask(__name__)
 
@@ -14,4 +14,6 @@ db.create_all()
 @app.route('/')
 def show_pet_list():
     '''Displays a list of the pets in the database.'''
-    return render_template('pet-list.html')
+    pets = Pet.query.all()
+    
+    return render_template('pet-list.html', pets=pets)

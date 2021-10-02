@@ -3,5 +3,13 @@
 {% block title %}Pets!{% endblock %}
 
 {% block content %}
+<h1>Pets</h1>
 
+{% for pet in pets %}
+<div class="pet-container ">
+    <img src="{{pet.photo_url}}" alt="pet photo">
+    <p><a href="">{{pet.name}}</a> is {% if pet.available %}
+        <strong>available</strong>{% else %}unavailable{% endif %}.</p>
+</div>
+{% endfor %}
 {% endblock %}
